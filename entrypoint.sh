@@ -9,5 +9,5 @@ if [ "${INPUT_REPORTER}" = x"github-pr-review" ]; then
     reviewdog -efm="%s:%l %m" -name="markdownlint" -diff="git diff HEAD^" -reporter=github-pr-review -level="${INPUT_LEVEL}" -tee
 else
   markdownlint "${INPUT_MARKDOWNLINT_FLAGS:-.}" |
-    reviewdog -efm="%s:%l %m" -name="markdownlint" -diff="git diff HEAD^" -reporter=github-pr-check -level="${INPUT_LEVEL}" -tee
+    reviewdog -efm="%f:%l %m" -name="markdownlint" -diff="git diff HEAD^" -reporter=github-pr-check -level="${INPUT_LEVEL}" -tee
 fi
