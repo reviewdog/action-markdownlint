@@ -11,24 +11,36 @@ code review experience.
 
 ## Inputs
 
-### `github_token`
-
-**Required**. Must be in form of `github_token: ${{ secrets.github_token }}`'.
-
-### `level`
-
-Optional. Report level for reviewdog [info,warning,error].
-It's same as `-level` flag of reviewdog.
-
-### `reporter`
-
-Reporter of reviewdog command [github-pr-check,github-pr-review,github-check].
-Default is github-pr-check.
-github-pr-review can use Markdown and add a link to rule page in reviewdog reports.
-
-### `markdownlint_flags`
-
-Optional. Flags of markdownlint command. Default: `.`
+```yml
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN.'
+    required: true
+  ### Flags for reviewdog ###
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+  reporter:
+    description: 'Reporter of reviewdog command [github-check,github-pr-review].'
+    default: 'github-check'
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    default: 'added'
+  fail_on_error:
+    description: |
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
+    default: 'false'
+  reviewdog_flags:
+    description: 'Additional reviewdog flags'
+    default: ''
+  ### Flags for markdownlint-cli ###
+  markdownlint_flags:
+    description: "Options of markdownlint-cli command. Default: '.'"
+    default: '.'
+```
 
 ## Example usage
 
@@ -44,8 +56,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: markdownlint
-        uses: prologic/action-markdownlint@v1
+        uses: reviewdog/action-markdownlint@v0.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review # Change reporter. (Only `github-pr-check` is supported at the moment).
+          reporter: github-pr-review
 ```
