@@ -5,6 +5,7 @@ jobs:
     name: runner / markdownlint
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: markdownlint-github-check
         uses: ./
         with:
