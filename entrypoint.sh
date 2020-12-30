@@ -8,7 +8,7 @@ markdownlint "${INPUT_MARKDOWNLINT_FLAGS:-.}" |
   reviewdog \
       -efm="%f:%l:%c %m" \
       -efm="%f:%l %m" \
-      -name="markdownlint"
+      -name="markdownlint" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
