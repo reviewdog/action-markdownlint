@@ -36,9 +36,9 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  ### Flags for <linter-name> ###
+  ### Flags for markdownlint-cli ###
   markdownlint_flags:
-    description: "Options of markdownlint command. Default: '.'"
+    description: "Options of markdownlint-cli command. Default: '.'"
     default: '.'
 ```
 
