@@ -4,8 +4,8 @@ cd "${GITHUB_WORKSPACE}" || exit
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-markdownlint "${INPUT_MARKDOWNLINT_FLAGS:-.}" 2>&1 |
-  reviewdog \
+markdownlint "${INPUT_MARKDOWNLINT_FLAGS:-.}" 2>&1 \
+  | reviewdog \
       -efm="%f:%l:%c %m" \
       -efm="%f:%l %m" \
       -name="markdownlint" \
