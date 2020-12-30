@@ -13,3 +13,9 @@ jobs:
           reporter: github-check
           level: warning
           filter_mode: nofilter
+
+      - name: markdownlint-github-pr-review
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
