@@ -5,7 +5,7 @@ cd "${GITHUB_WORKSPACE}" || exit
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 # shellcheck disable=SC2086
-markdownlint-cli2 ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
+markdownlint ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
   | reviewdog \
       -efm="%f:%l:%c %m" \
       -efm="%f:%l %m" \
@@ -19,7 +19,7 @@ markdownlint-cli2 ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
  # github-pr-review only diff adding
 if [ "${INPUT_REPORTER}" = "github-pr-review" ]; then
   # fix
-  markdownlint-cli2 --fix ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 || true
+  markdownlint --fix ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 || true
 
   TMPFILE=$(mktemp)
   git diff > "${TMPFILE}"
