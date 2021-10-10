@@ -1,4 +1,8 @@
-FROM prologic/markdownlint:latest
+FROM node:16-alpine3.14
+
+ENV MARKDOWNLINT_VERSION=v0.29.0
+
+RUN npm install -g "markdownlint-cli@$MARKDOWNLINT_CLI_VERSION"
 
 ENV REVIEWDOG_VERSION=v0.13.0
 
