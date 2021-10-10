@@ -38,8 +38,8 @@ inputs:
     default: ''
   ### Flags for markdownlint-cli ###
   markdownlint_flags:
-    description: "Options of markdownlint-cli command. Default: '\"**/*.md\" \"#node_modules\"'"
-    default: '"**/*.md" "#node_modules"'
+    description: "Options of markdownlint-cli command. Default: '.'"
+    default: '.'
 ```
 
 ## Example usage
