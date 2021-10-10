@@ -2,7 +2,7 @@ FROM node:16-alpine3.14
 
 ENV MARKDOWNLINT_VERSION=v0.24.0
 
-RUN npm install -g markdownlint
+RUN npm install -g "markdownlint@$MARKDOWNLINT_VERSION"
 
 ENV REVIEWDOG_VERSION=v0.13.0
 
