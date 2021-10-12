@@ -16,7 +16,7 @@ jobs:
         with:
           file: Dockerfile
           version_name: MARKDOWNLINT_CLI_VERSION
-          repo: DavidAnson/markdownlint-cli
+          repo: igorshubovych/markdownlint-cli
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
