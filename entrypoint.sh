@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "${GITHUB_WORKSPACE}" || exit
+cd "${GITHUB_WORKSPACE}" || exit 1
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
@@ -18,6 +18,8 @@ markdownlint ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
 
  # github-pr-review only diff adding
 if [ "${INPUT_REPORTER}" = "github-pr-review" ]; then
+  git config --global --add safe.directory "${GITHUB_WORKSPACE}" || exit 1
+
   # fix
   markdownlint --fix ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 || true
 
