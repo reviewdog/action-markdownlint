@@ -15,7 +15,7 @@ code review experience.
 inputs:
   github_token:
     description: 'GITHUB_TOKEN.'
-    required: true
+    default: '${{ github.token }}'
   ### Flags for reviewdog ###
   level:
     description: 'Report level for reviewdog [info,warning,error]'
