@@ -12,7 +12,8 @@ RUN apt-get update \
         wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh \
+RUN set -eux \
+    && wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh \
     | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
 COPY entrypoint.sh /entrypoint.sh
