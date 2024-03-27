@@ -1,4 +1,4 @@
-FROM node:16-alpine3.12
+FROM node:18-bullseye-slim
 
 ENV MARKDOWNLINT_CLI_VERSION=v0.37.0
 
