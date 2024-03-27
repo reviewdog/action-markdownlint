@@ -6,9 +6,14 @@ RUN npm install -g "markdownlint-cli@$MARKDOWNLINT_CLI_VERSION"
 
 ENV REVIEWDOG_VERSION=v0.15.0
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        git \
+        wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh \
     | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
-RUN apk --no-cache -U add git
 
 COPY entrypoint.sh /entrypoint.sh
 
