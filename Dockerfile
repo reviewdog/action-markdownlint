@@ -1,4 +1,4 @@
-FROM node:20-alpine3.19
+FROM node:16-alpine3.12
 
 ENV MARKDOWNLINT_CLI_VERSION=v0.37.0
 
