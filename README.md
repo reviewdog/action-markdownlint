@@ -11,6 +11,7 @@ code review experience.
 
 ## Inputs
 
+<!-- markdownlint-disable MD013 -->
 ```yml
 inputs:
   github_token:
@@ -50,6 +51,7 @@ inputs:
     description: "Options of markdownlint-cli command. Default: '.'"
     default: '.'
 ```
+<!-- markdownlint-enable MD013 -->
 
 ## Example usage
 
