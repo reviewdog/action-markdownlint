@@ -13,6 +13,7 @@ markdownlint ${INPUT_MARKDOWNLINT_FLAGS:-.} 2>&1 \
       -name="markdownlint" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
+      -fail-level="${INPUT_FAIL_LEVEL}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
       ${INPUT_REVIEWDOG_FLAGS} || EXIT_CODE=$?
