@@ -1,6 +1,6 @@
 FROM node:20-bullseye-slim
 
-ENV MARKDOWNLINT_CLI_VERSION=v0.41.0
+ENV MARKDOWNLINT_CLI_VERSION=v0.45.0
 
 RUN npm install -g "markdownlint-cli@$MARKDOWNLINT_CLI_VERSION"
 
