@@ -40,7 +40,7 @@ inputs:
     default: '.'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://ghcr.io/reviewdog/action-markdownlint:v0.29.0@sha256:ec81999d666a953c6e045bb3889b749ab774da973b957ec3b414ee33a4e938a2'
 branding:
   icon: 'zoom-in'
   color: 'purple'
