@@ -4,7 +4,7 @@ ENV MARKDOWNLINT_CLI_VERSION=v0.49.1
 
 RUN npm install -g "markdownlint-cli@$MARKDOWNLINT_CLI_VERSION"
 
-ENV REVIEWDOG_VERSION=v0.21.0
+ENV REVIEWDOG_VERSION=v0.21.1
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
