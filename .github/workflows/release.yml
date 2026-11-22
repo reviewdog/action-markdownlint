@@ -23,9 +23,16 @@ jobs:
 
       # Release tags must be reachable from HEAD because the bump comment uses `git tag --merged`:
       # https://github.com/haya14busa/bump/blob/9ab5412f5d96eb624c7e8559acbb11330be9901a/main.go#L72
+      # If the release branch doesn't exist yet (e.g. the first release), stay on the current HEAD.
+      # .github/build.sh creates the release branch from master in that case.
       - name: checkout to release branch
         run: |
-          git checkout -b "releases/$(cat .major-version)" "origin/releases/$(cat .major-version)"
+          MAJOR=$(cat .major-version)
+          if git rev-parse --verify --quiet "refs/remotes/origin/releases/$MAJOR" > /dev/null; then
+            git checkout -b "releases/$MAJOR" "origin/releases/$MAJOR"
+          else
+            echo "::notice::origin/releases/$MAJOR does not exist. Use the current HEAD instead."
+          fi
 
       # Bump version on merging Pull Requests with specific labels.
       # (bump:major,bump:minor,bump:patch)
@@ -50,6 +57,7 @@ jobs:
           ./.github/build.sh
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
           INPUT_TAG: ${{ steps.bumpr.outputs.next_version }}
 
       # Create release.
@@ -75,9 +83,16 @@ jobs:
 
       # Release tags must be reachable from HEAD because the bump comment uses `git tag --merged`:
       # https://github.com/haya14busa/bump/blob/9ab5412f5d96eb624c7e8559acbb11330be9901a/main.go#L72
+      # If the release branch doesn't exist yet (e.g. the first release), stay on the current HEAD.
+      # .github/build.sh creates the release branch from master in that case.
       - name: checkout to release branch
         run: |
-          git checkout -b "releases/$(cat .major-version)" "origin/releases/$(cat .major-version)"
+          MAJOR=$(cat .major-version)
+          if git rev-parse --verify --quiet "refs/remotes/origin/releases/$MAJOR" > /dev/null; then
+            git checkout -b "releases/$MAJOR" "origin/releases/$MAJOR"
+          else
+            echo "::notice::origin/releases/$MAJOR does not exist. Use the current HEAD instead."
+          fi
 
       - name: Post bumpr status comment
         uses: haya14busa/action-bumpr@v1.11.4
